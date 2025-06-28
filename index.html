@@ -42,13 +42,14 @@
       display: inline-block;
       background-color: #ffffff;
       color: #2c3e50;
-      padding: 14px 28px;
+      padding: 12px 20px;
       margin: 10px;
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
       transition: all 0.3s ease;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
     }
 
     .button:hover {
@@ -105,7 +106,7 @@
   </style>
 </head>
 <body>
-  
+
   <img src="paalogo.png" alt="Gona logo" class="logo" />
 
   <h1>📱 Gona-sovellukset</h1>
@@ -113,6 +114,11 @@
 
   <a class="button" href="https://apps.apple.com/fi/app/gonajahti/id6745255507?l=fi" target="_blank">🫎 Lataa GonaJahti</a>
   <a class="button" href="https://apps.apple.com/fi/app/gonal%C3%A4%C3%A4kis/id6745609446?l=fi" target="_blank">📘 Lataa GonaLääkis</a>
+
+  <div>
+    <button class="button" onclick="setSlideshow('laakis')">Näytä GonaLääkis -kuvat</button>
+    <button class="button" onclick="setSlideshow('jahti')">Näytä GonaJahti -kuvat</button>
+  </div>
 
   <div class="slideshow">
     <img id="slideshowImage" src="1.png" alt="Esittelykuva" />
@@ -123,14 +129,23 @@
   </footer>
 
   <script>
-    const images = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png"];
-    let current = 0;
+    const laakisImages = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png"];
+    const jahtiImages = ["jahti1.png", "jahti2.png", "jahti3.png", "jahti4.png"];
+
+    let currentImages = laakisImages;
+    let currentIndex = 0;
     const imgElement = document.getElementById("slideshowImage");
 
+    function setSlideshow(type) {
+      currentImages = type === 'laakis' ? laakisImages : jahtiImages;
+      currentIndex = 0;
+      imgElement.src = currentImages[currentIndex];
+    }
+
     setInterval(() => {
-      current = (current + 1) % images.length;
-      imgElement.src = images[current];
-    }, 3000); // Kuva vaihtuu 3 sekunnin välein
+      currentIndex = (currentIndex + 1) % currentImages.length;
+      imgElement.src = currentImages[currentIndex];
+    }, 3000);
   </script>
 
 </body>
