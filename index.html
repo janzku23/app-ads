@@ -1,65 +1,94 @@
 <!DOCTYPE html>
 <html lang="fi">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Gona – App Info</title>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: "Segoe UI", sans-serif;
-        color: white;
-        text-align: center;
-        background: linear-gradient(135deg, #2c3e50, #3498db);
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gona – Sovellukset</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      color: white;
+      text-align: center;
+      background: linear-gradient(135deg, #2c3e50, #3498db);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
 
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5em;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2em;
+      max-width: 600px;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #ffffff;
+      color: #2c3e50;
+      padding: 14px 28px;
+      margin: 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .button:hover {
+      background-color: #f0f0f0;
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+
+    footer {
+      margin-top: auto;
+      font-size: 0.9rem;
+      padding: 15px;
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: underline;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 480px) {
       h1 {
-        font-size: 2.5rem;
-        margin-bottom: 0.3em;
+        font-size: 2rem;
       }
-
       p {
-        font-size: 1.2rem;
-        margin-bottom: 2em;
+        font-size: 1rem;
       }
-
       .button {
-        display: inline-block;
-        background-color: #ffffff;
-        color: #2c3e50;
-        padding: 12px 24px;
-        margin: 10px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
-      }
-
-      .button:hover {
-        background-color: #f0f0f0;
-      }
-
-      footer {
-        position: absolute;
-        bottom: 10px;
         width: 100%;
-        font-size: 0.9rem;
+        max-width: 300px;
       }
-    </style>
-  </head>
-  <body>
-    <h1>📱 Gona-sovellukset</h1>
-    <p>Tämä on GonaJahti ja GonaLääkis -sovellusten virallinen markkinointisivu.</p>
+    }
+  </style>
+</head>
+<body>
+  <h1>📱 Gona-sovellukset</h1>
+  <p>Tervetuloa GonaJahti ja GonaLääkis -sovellusten viralliselle sivulle. Tutustu ja lataa sovellukset alta.</p>
 
-    <a class="button" href="https://apps.apple.com/fi/app/gonajahti/id6745255507?l=fi" target="_blank">🫎 Lataa GonaJahti</a>
-    <a class="button" href="https://apps.apple.com/fi/app/gonal%C3%A4%C3%A4kis/id6745609446?l=fi" target="_blank">📘 Lataa GonaLääkis</a>
+  <a class="button" href="https://apps.apple.com/fi/app/gonajahti/id6745255507?l=fi" target="_blank">🫎 Lataa GonaJahti</a>
+  <a class="button" href="https://apps.apple.com/fi/app/gonal%C3%A4%C3%A4kis/id6745609446?l=fi" target="_blank">📘 Lataa GonaLääkis</a>
 
-    <footer>
-      <a href="app-ads.txt" style="color: white;">Näytä app-ads.txt</a>
-    </footer>
-  </body>
+  <footer>
+    <a href="app-ads.txt">Näytä app-ads.txt</a>
+  </footer>
+</body>
 </html>
+
