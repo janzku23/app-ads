@@ -2,9 +2,9 @@
 <html lang="fi">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="2; url=https://apps.apple.com/fi/app/gonal%C3%A4%C3%A4kis/id6745609446?l=fi" />
+  <meta http-equiv="refresh" content="4; url=https://apps.apple.com/fi/app/gonal%C3%A4%C3%A4kis/id6745609446?l=fi" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Siirrytään GonaLääkis-sivulle...</title>
+  <title>GonaLääkis – iPhone-sovellus</title>
   <style>
     body {
       margin: 0;
@@ -22,9 +22,40 @@
       box-sizing: border-box;
     }
 
+    .slideshow {
+      margin: 20px 0;
+      width: 300px;
+      height: 600px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      position: relative;
+    }
+
+    .slideshow img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .slideshow img.visible {
+      opacity: 1;
+    }
+
     h1 {
       font-size: 2rem;
-      margin-bottom: 1em;
+      margin-bottom: 0.5em;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 500px;
+      margin: 0.5em 0 1em;
     }
 
     a {
@@ -43,8 +74,44 @@
 </head>
 <body>
 
-  <h1>Siirrytään GonaLääkis -sovelluksen sivulle...</h1>
+  <h1>📘 GonaLääkis – iPhone-sovellus</h1>
+  <p>Siirrytään pian App Storeen lataussivulle. Sovellus on tarkoitettu Apple-laitteille.</p>
+  <p>Android-versio tulossa Google Play -kauppaan noin syksyllä 2025!</p>
+
+  <div class="slideshow">
+    <img id="img1" src="1.png" class="visible" alt="Esittelykuva">
+    <img id="img2" src="1.png" alt="Esittelykuva">
+  </div>
+
   <p>Jos et siirry automaattisesti, klikkaa <a href="https://apps.apple.com/fi/app/gonal%C3%A4%C3%A4kis/id6745609446?l=fi">tästä</a>.</p>
+
+  <script>
+    const laakisImages = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png"];
+    let currentIndex = 0;
+    let activeImg = 1;
+
+    const img1 = document.getElementById("img1");
+    const img2 = document.getElementById("img2");
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % laakisImages.length;
+      const nextSrc = laakisImages[currentIndex];
+
+      if (activeImg === 1) {
+        img2.src = nextSrc;
+        img2.classList.add("visible");
+        img1.classList.remove("visible");
+        activeImg = 2;
+      } else {
+        img1.src = nextSrc;
+        img1.classList.add("visible");
+        img2.classList.remove("visible");
+        activeImg = 1;
+      }
+    }
+
+    setInterval(nextImage, 3000);
+  </script>
 
 </body>
 </html>
