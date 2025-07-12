@@ -152,10 +152,13 @@
 
   <a class="button" href="https://apps.apple.com/fi/app/gonajahti/id6745255507?l=fi" target="_blank">🫎 Lataa GonaJahti 🫎</a>
   <a class="button" href="https://apps.apple.com/fi/app/gonal%C3%A4%C3%A4kis/id6745609446?l=fi" target="_blank">📘 Lataa GonaLääkis 📘</a>
+   <a class="button" href="https://apps.apple.com/fi/app/gonah%C3%B6mpsy/id6746981698?l=fi" target="_blank">🍺 Lataa GonaHömpsy 🍺</a>
 
   <div class="toggle-container">
     <button id="btnLaakis" class="toggle-button active" onclick="setSlideshow('laakis')">GonaLääkis</button>
     <button id="btnJahti" class="toggle-button" onclick="setSlideshow('jahti')">GonaJahti</button>
+    <button id="btnHömpsy" class="toggle-button" onclick="setSlideshow('hömpsy')">GonaHömpsy</button>
+
   </div>
 
   <div class="slideshow">
@@ -170,6 +173,8 @@
   <script>
     const laakisImages = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png"];
     const jahtiImages = ["jahti1.jpg", "jahti2.jpg", "jahti3.jpg", "jathi4.jpg"];
+    const hömpsyImages = ["11.png", "22.png", "33.png"];
+
 
     let currentImages = laakisImages;
     let currentIndex = 0;
@@ -180,22 +185,32 @@
 
     const btnLaakis = document.getElementById("btnLaakis");
     const btnJahti = document.getElementById("btnJahti");
+    const btnHömpsy = document.getElementById("btnHömpsy");
 
-    function setSlideshow(type) {
-      currentImages = type === 'laakis' ? laakisImages : jahtiImages;
-      currentIndex = 0;
 
-      if (type === 'laakis') {
-        btnLaakis.classList.add("active");
-        btnJahti.classList.remove("active");
-      } else {
-        btnLaakis.classList.remove("active");
-        btnJahti.classList.add("active");
-      }
+  function setSlideshow(type) {
+  if (type === 'laakis') {
+    currentImages = laakisImages;
+    btnLaakis.classList.add("active");
+    btnJahti.classList.remove("active");
+    btnHömpsy.classList.remove("active");
+  } else if (type === 'jahti') {
+    currentImages = jahtiImages;
+    btnLaakis.classList.remove("active");
+    btnJahti.classList.add("active");
+    btnHömpsy.classList.remove("active");
+  } else if (type === 'hömpsy') {
+    currentImages = hömpsyImages;
+    btnLaakis.classList.remove("active");
+    btnJahti.classList.remove("active");
+    btnHömpsy.classList.add("active");
+  }
 
-      img1.src = currentImages[0];
-      img2.src = currentImages[0];
-    }
+  currentIndex = 0;
+  img1.src = currentImages[0];
+  img2.src = currentImages[0];
+}
+
 
     function nextImage() {
       currentIndex = (currentIndex + 1) % currentImages.length;
