@@ -110,6 +110,39 @@
       box-shadow: 0 6px 12px rgba(0,0,0,0.3);
     }
 
+    .button[disabled],
+    .disabled {
+      opacity: 0.55;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+
+    .android-card {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.12);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      max-width: 720px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .step {
+      background: rgba(255,255,255,0.16);
+      border-radius: 10px;
+      padding: 12px;
+    }
+
+    .step h3 {
+      margin: 0 0 6px 0;
+    }
+
     footer {
       margin-top: 20px;
       font-size: 0.9rem;
@@ -124,18 +157,15 @@
       border-radius: 4px;
     }
 
-   @media (max-width: 480px) {
-  h1 {
-    font-size: 2rem;
-  }
-  p {
-    font-size: 1rem;
-  }
-  .slideshow {
-    width: 95%;
-    height: 750px; /* Lukitaan järkevä korkeus mobiilille */
-  }
-}
+    @media (max-width: 480px) {
+      h1 { font-size: 2rem; }
+      p  { font-size: 1rem; }
+      .slideshow {
+        width: 95%;
+        height: 750px;
+      }
+      .steps { gap: 8px; }
+    }
   </style>
 </head>
 <body>
@@ -144,21 +174,73 @@
 
   <h1>📱 Gona-sovellukset</h1>
   <p>Tervetuloa GonaJahti ja GonaLääkis -sovellusten viralliselle sivulle. Tutustu ja lataa sovellukset appstoresta alta.</p>
- <p>Android-versio tulossa Google Play -kauppaan noin syksyllä 2025!</p>
 
-  <p>Jätä anonyymi kysymys tai palautetta klikkaamalla alta:</p>
-<a class="button" href="https://ngl.link/gonakoodaa" target="_blank">💬 Lähetä kysymys tai palaute 💬</a>
+  <!-- ✅ ANDROID BETA: liittyminen + lataus -->
+  <div class="android-card" role="region" aria-labelledby="androidTitle">
+    <h2 id="androidTitle">🤖 Android (beta) — Liity ja asenna</h2>
+    <p style="margin-top:0.25rem">
+      Asennus Androidille tapahtuu kahdessa vaiheessa: ensin liityt testiryhmään (Google Groups), sitten voit avata Play-kaupan tai käyttää web-testauslinkkiä.
+    </p>
 
+    <div class="steps" aria-live="polite">
+      <div class="step">
+        <h3>1) Liity testiryhmään</h3>
+        <a
+          class="button"
+          id="btnGroups"
+          href="https://groups.google.com/g/gona-test"
+          target="_blank"
+          rel="noopener"
+          aria-label="Avaa Google Groups -ryhmä"
+        >👥 Liity Google Groups -ryhmään</a>
 
-  <a class="button" href="https://apps.apple.com/fi/app/gonajahti/id6745255507?l=fi" target="_blank">🫎 Lataa GonaJahti 🫎</a>
-  <a class="button" href="https://apps.apple.com/fi/app/gonal%C3%A4%C3%A4kis/id6745609446?l=fi" target="_blank">📘 Lataa GonaLääkis 📘</a>
-   <a class="button" href="https://apps.apple.com/fi/app/gonah%C3%B6mpsy/id6746981698?l=fi" target="_blank">🍺 Lataa GonaHömpsy 🍺</a>
+        <button class="button" id="btnJoined" aria-label="Vahvista liittyminen">
+          ✅ Olen liittynyt
+        </button>
+        <p id="joinHint" style="margin:8px 0 0; opacity:0.9;">
+          Vinkki: Jos sinulla ei ole Google-tiliä tai liittymispyyntö odottaa hyväksyntää, voit silti kokeilla web-testausta alla.
+        </p>
+      </div>
+
+      <div class="step">
+        <h3>2) Lataa ja testaa</h3>
+        <a
+          class="button disabled"
+          id="btnStore"
+          href="https://play.google.com/store/apps/details?id=com.anonymous.gonalaakis"
+          target="_blank"
+          rel="noopener"
+          aria-label="Avaa Play-kauppa"
+        >🛍️ Avaa Play-kauppa</a>
+
+        <a
+          class="button disabled"
+          id="btnWeb"
+          href="https://play.google.com/apps/testing/com.anonymous.gonalaakis"
+          target="_blank"
+          rel="noopener"
+          aria-label="Avaa web-testaus"
+        >🌐 Web-testaus (Play Test)</a>
+
+        <p id="storeHint" style="margin:8px 0 0; opacity:0.9;">
+          Linkit aktivoituvat, kun vahvistat liittyneesi. Jos Play-kauppa näyttää “Ei käytettävissä”, odota hetki ja avaa linkki uudelleen.
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- /ANDROID BETA -->
+
+  <p style="margin-top:18px;">Jätä anonyymi kysymys tai palautetta klikkaamalla alta:</p>
+  <a class="button" href="https://ngl.link/gonakoodaa" target="_blank" rel="noopener">💬 Lähetä kysymys tai palaute 💬</a>
+
+  <a class="button" href="https://apps.apple.com/fi/app/gonajahti/id6745255507?l=fi" target="_blank" rel="noopener">🫎 Lataa GonaJahti 🫎</a>
+  <a class="button" href="https://apps.apple.com/fi/app/gonal%C3%A4%C3%A4kis/id6745609446?l=fi" target="_blank" rel="noopener">📘 Lataa GonaLääkis 📘</a>
+  <a class="button" href="https://apps.apple.com/fi/app/gonah%C3%B6mpsy/id6746981698?l=fi" target="_blank" rel="noopener">🍺 Lataa GonaHömpsy 🍺</a>
 
   <div class="toggle-container">
     <button id="btnLaakis" class="toggle-button active" onclick="setSlideshow('laakis')">GonaLääkis</button>
     <button id="btnJahti" class="toggle-button" onclick="setSlideshow('jahti')">GonaJahti</button>
     <button id="btnHömpsy" class="toggle-button" onclick="setSlideshow('hömpsy')">GonaHömpsy</button>
-
   </div>
 
   <div class="slideshow">
@@ -171,10 +253,10 @@
   </footer>
 
   <script>
-    const laakisImages = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png"];
-    const jahtiImages = ["jahti1.jpg", "jahti2.jpg", "jahti3.jpg", "jathi4.jpg"];
+    // --- Slideshow ---
+    const laakisImages = ["1.png", "2.png", "3.png", "4.png", "5.png"];
+    const jahtiImages  = ["jahti1.jpg", "jahti2.jpg", "jahti3.jpg", "jathi4.jpg"];
     const hömpsyImages = ["66.png", "22.png", "11.png"];
-
 
     let currentImages = laakisImages;
     let currentIndex = 0;
@@ -184,33 +266,31 @@
     const img2 = document.getElementById("img2");
 
     const btnLaakis = document.getElementById("btnLaakis");
-    const btnJahti = document.getElementById("btnJahti");
+    const btnJahti  = document.getElementById("btnJahti");
     const btnHömpsy = document.getElementById("btnHömpsy");
 
+    function setSlideshow(type) {
+      if (type === 'laakis') {
+        currentImages = laakisImages;
+        btnLaakis.classList.add("active");
+        btnJahti.classList.remove("active");
+        btnHömpsy.classList.remove("active");
+      } else if (type === 'jahti') {
+        currentImages = jahtiImages;
+        btnLaakis.classList.remove("active");
+        btnJahti.classList.add("active");
+        btnHömpsy.classList.remove("active");
+      } else if (type === 'hömpsy') {
+        currentImages = hömpsyImages;
+        btnLaakis.classList.remove("active");
+        btnJahti.classList.remove("active");
+        btnHömpsy.classList.add("active");
+      }
 
-  function setSlideshow(type) {
-  if (type === 'laakis') {
-    currentImages = laakisImages;
-    btnLaakis.classList.add("active");
-    btnJahti.classList.remove("active");
-    btnHömpsy.classList.remove("active");
-  } else if (type === 'jahti') {
-    currentImages = jahtiImages;
-    btnLaakis.classList.remove("active");
-    btnJahti.classList.add("active");
-    btnHömpsy.classList.remove("active");
-  } else if (type === 'hömpsy') {
-    currentImages = hömpsyImages;
-    btnLaakis.classList.remove("active");
-    btnJahti.classList.remove("active");
-    btnHömpsy.classList.add("active");
-  }
-
-  currentIndex = 0;
-  img1.src = currentImages[0];
-  img2.src = currentImages[0];
-}
-
+      currentIndex = 0;
+      img1.src = currentImages[0];
+      img2.src = currentImages[0];
+    }
 
     function nextImage() {
       currentIndex = (currentIndex + 1) % currentImages.length;
@@ -228,8 +308,36 @@
         activeImg = 1;
       }
     }
-
     setInterval(nextImage, 3000);
+
+    // --- Android beta logic ---
+    const btnJoined = document.getElementById("btnJoined");
+    const btnStore  = document.getElementById("btnStore");
+    const btnWeb    = document.getElementById("btnWeb");
+
+    function enableAndroidLinks() {
+      btnStore.classList.remove("disabled");
+      btnWeb.classList.remove("disabled");
+    }
+
+    function disableAndroidLinks() {
+      btnStore.classList.add("disabled");
+      btnWeb.classList.add("disabled");
+    }
+
+    // Persisted state
+    const joinedKey = "gona_android_joined";
+    const alreadyJoined = localStorage.getItem(joinedKey) === "true";
+    if (alreadyJoined) {
+      enableAndroidLinks();
+    } else {
+      disableAndroidLinks();
+    }
+
+    btnJoined.addEventListener("click", () => {
+      localStorage.setItem(joinedKey, "true");
+      enableAndroidLinks();
+    });
   </script>
 
 </body>
